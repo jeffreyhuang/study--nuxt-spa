@@ -39,16 +39,27 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
+    '@nuxtjs/auth',
     'bootstrap-vue/nuxt'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'https://codecourse-nuxt-laravel-auth.dev/api'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'post', propertyName: 'meta.token' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/me', method: 'get', propertyName: 'data' }
+        }
+      }
+    }
   },
 
   /*
@@ -59,7 +70,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }
