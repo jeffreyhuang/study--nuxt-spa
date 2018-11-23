@@ -1,5 +1,5 @@
 <template>
-  <p>index</p>
+  <p>home</p>
 </template>
 
 <script>
